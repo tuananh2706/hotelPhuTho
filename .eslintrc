@@ -1,0 +1,34 @@
+{
+    "extends": ["react-app", "prettier", "plugin:@typescript-eslint/recommended"],
+    "plugins": ["react", "prettier", "@typescript-eslint"],
+    "rules": {
+        "prettier/prettier": "error",
+        "spaced-comment": "off",
+        "no-console": "off",
+        "consistent-return": "off",
+        "func-names": "off",
+        "object-shorthand": "off",
+        "no-param-reassign": "off",
+        "no-return-await": "off",
+        "no-underscore-dangle": "off",
+        "class-methods-use-this": "off",
+        "prefer-destructuring": ["error", { "object": true, "array": false }],
+        "comma-dangle": "off",
+
+        // Quy tắc bổ sung cho React
+        "react/jsx-filename-extension": [1, { "extensions": [".jsx", ".tsx"] }],
+        "react/prop-types": "off", // Tắt kiểm tra prop-types nếu sử dụng TypeScript
+        "react/no-unused-prop-types": "warn",
+        "react/jsx-boolean-value": ["error", "never"],
+        "import/prefer-default-export": "off",
+        "no-multiple-empty-lines": ["error", { "max": 1 }],
+        "max-len": ["error", { "code": 80 }],
+
+        // Cấu hình TypeScript
+        "@typescript-eslint/no-unused-vars": [
+            "error",
+            { "argsIgnorePattern": "req|res|next|val" }
+        ],
+        "@typescript-eslint/explicit-function-return-type": "off" // Tùy chọn cho việc xác định kiểu trả về của hàm
+    }
+}
