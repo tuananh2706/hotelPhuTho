@@ -1,0 +1,100 @@
+@use '../../components/Styles/abstracts';
+
+.home-banner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    margin: 42px auto 0;
+
+    width: 100%;
+    max-width: 1200px;
+
+    &__img-wrap--1,
+    &__img-wrap--5 {
+        position: relative;
+        padding-top: 30%;
+        width: 204px;
+        height: 100%;
+    }
+
+    &__img--4,
+    &__img--5 {
+        clip-path: polygon(0% 5%, 100% 0%, 100% 100%, 0% 95%);
+    }
+
+    &__img--1,
+    &__img--2 {
+        clip-path: polygon(0% 0%, 100% 5%, 100% 95%, 0% 100%);
+    }
+
+    &__img--1,
+    &__img--5 {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        object-fit: cover;
+    }
+
+    &__img-wrap--2,
+    &__img-wrap--4 {
+        position: relative;
+        padding-top: 40%;
+        width: 274px;
+        z-index: 1;
+
+        @include abstracts.screen(md) {
+            padding-top: 60%;
+        }
+    }
+
+    &__img-wrap--2,
+    &__img-wrap--4,
+    &__img-wrap--3,
+    &__img-wrap--5 {
+        margin-left: -30px;
+    }
+
+    &__img--2,
+    &__img--4 {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        object-fit: cover;
+    }
+
+    &__img-wrap--3 {
+        position: relative;
+        padding-top: 46%;
+        width: 385px;
+        z-index: 2;
+        display: inline-block;
+
+        @include abstracts.screen(md) {
+            padding-top: 70%;
+        }
+    }
+
+    &__img--3 {
+        position: absolute;
+        top: 0;
+        left: 0;
+        // height: 100%;
+        width: 100%;
+        object-fit: cover;
+    }
+    .caption {
+        position: absolute;
+        bottom: 30%;
+        left: 10px;
+        color: white;
+        padding: 5px;
+        font-size: 1.25em;
+        font-family:'Roboto';
+        font-weight: 700;
+        word-wrap: break-word;
+        transform: skewY(-5deg)
+    }
+}

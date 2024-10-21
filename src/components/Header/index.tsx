@@ -18,15 +18,27 @@ function Header() {
             <nav className={classBind('topbar')}>
                 <Link to='/' className={classBind('topbar__link--logo')}>
                     <img
-                        className={classBind('topbar__logo', 'd-none', 'd-lg-block')}
+                        className={classBind(
+                            'topbar__logo',
+                            'd-none',
+                            'd-lg-block'
+                        )}
                         src={icon.logo}
                         alt='Phu Tho Hotel'
                     />
                 </Link>
 
-                <ul className={classBind('topbar__list', { 'd-lg-none': !isMenuOpen })}>
+                <ul
+                    className={classBind('topbar__list', {
+                        'd-lg-none': !isMenuOpen
+                    })}
+                >
                     <button
-                        className={classBind('close-btn', 'd-none', 'd-lg-block')}
+                        className={classBind(
+                            'close-btn',
+                            'd-none',
+                            'd-lg-block'
+                        )}
                         onClick={toggleMenu}
                     >
                         <img
@@ -40,7 +52,7 @@ function Header() {
                         <NavLink
                             className={({ isActive }) =>
                                 classBind('topbar__link', {
-                                    'topbar__link--active': isActive,
+                                    'topbar__link--active': isActive
                                 })
                             }
                             to='/'
@@ -52,7 +64,7 @@ function Header() {
                         <NavLink
                             className={({ isActive }) =>
                                 classBind('topbar__link', {
-                                    'topbar__link--active': isActive,
+                                    'topbar__link--active': isActive
                                 })
                             }
                             to='/blogs'
@@ -61,7 +73,13 @@ function Header() {
                         </NavLink>
                     </li>
                     <li className={classBind('d-lg-none')}>
-                        <Link to='/' className={classBind('topbar__link--logo', 'd-lg-none')}>
+                        <Link
+                            to='/'
+                            className={classBind(
+                                'topbar__link--logo',
+                                'd-lg-none'
+                            )}
+                        >
                             <img
                                 className={classBind('topbar__logo')}
                                 src={icon.logo}
@@ -73,7 +91,7 @@ function Header() {
                         <NavLink
                             className={({ isActive }) =>
                                 classBind('topbar__link', {
-                                    'topbar__link--active': isActive,
+                                    'topbar__link--active': isActive
                                 })
                             }
                             to='/documents'
@@ -85,7 +103,7 @@ function Header() {
                         <NavLink
                             className={({ isActive }) =>
                                 classBind('topbar__link', {
-                                    'topbar__link--active': isActive,
+                                    'topbar__link--active': isActive
                                 })
                             }
                             to='/careers'
@@ -96,7 +114,11 @@ function Header() {
                 </ul>
 
                 <button
-                    className={classBind('topbar__more', 'd-none', 'd-lg-block')}
+                    className={classBind(
+                        'topbar__more',
+                        'd-none',
+                        'd-lg-block'
+                    )}
                     onClick={toggleMenu}
                 >
                     <img
