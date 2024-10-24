@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import styles from './Footer.module.scss';
 import classNames from 'classnames/bind';
-import icon from '~/assets/icon';
+import icon from '~/assets/icons';
 
 const classBind = classNames.bind(styles);
 

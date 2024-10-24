@@ -3,6 +3,5 @@
     "jsxSingleQuote": true,
     "tabWidth": 4,
     "printWidth": 80,
-    "trailingComma": "none",
-    "endOfLine": "lf"
+    "trailingComma": "none"
 }

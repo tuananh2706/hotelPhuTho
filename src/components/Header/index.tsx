@@ -1,7 +1,7 @@
 import { Link, NavLink } from 'react-router-dom';
 import styles from './Header.module.scss';
 import classNames from 'classnames/bind';
-import icon from '~/assets/icon';
+import icon from '~/assets/icons';
 import { useState } from 'react';
 
 const classBind = classNames.bind(styles);
@@ -106,7 +106,7 @@ function Header() {
                                     'topbar__link--active': isActive
                                 })
                             }
-                            to='/careers'
+                            to='/jobs'
                         >
                             TUYỂN DỤNG
                         </NavLink>

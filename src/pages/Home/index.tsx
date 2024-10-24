@@ -318,6 +318,9 @@ function Home() {
                                         descClassName={classBind(
                                             'custom-desc-home-service'
                                         )}
+                                        titleClassName={classBind(
+                                            'custom-title-home-service'
+                                        )}
                                     />
                                 </div>
                                 <div className={classBind('col')}>
@@ -330,6 +333,9 @@ function Home() {
                                         descClassName={classBind(
                                             'custom-desc-home-service'
                                         )}
+                                        titleClassName={classBind(
+                                            'custom-title-home-service'
+                                        )}
                                     />
                                 </div>
                                 <div className={classBind('col')}>
@@ -341,6 +347,9 @@ function Home() {
                                         image={image.service_img_3}
                                         descClassName={classBind(
                                             'custom-desc-home-service'
+                                        )}
+                                        titleClassName={classBind(
+                                            'custom-title-home-service'
                                         )}
                                     />
                                 </div>

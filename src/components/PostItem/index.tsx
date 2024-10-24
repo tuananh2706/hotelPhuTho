@@ -5,10 +5,11 @@ import classNames from 'classnames/bind';
 const classBind = classNames.bind(styles);
 
 interface PostItemProps {
+    infoClassName?: string;
     host?: string;
     title: string;
     desc?: string;
-    tags?: { name: string }[];
+    tags?: { name: string; tagClassName?: string }[];
     view?: string;
     postDate?: string;
     image?: string;
@@ -16,6 +17,9 @@ interface PostItemProps {
     titleClassName?: string;
     descClassName?: string;
     viewClassName?: string;
+    dateClassName?: string;
+    tagContainerClassName?: string;
+    mini?: boolean;
 }
 
 function PostItem({
@@ -26,13 +30,17 @@ function PostItem({
     view,
     postDate,
     image,
+    infoClassName,
     hostClassName,
     titleClassName,
     descClassName,
-    viewClassName
+    viewClassName,
+    dateClassName,
+    tagContainerClassName,
+    mini = false
 }: PostItemProps) {
     return (
-        <article className={classBind('postitem')}>
+        <article className={classBind('postitem', { 'postcard--mini': mini })}>
             <Link to='#'>
                 <div className={classBind('postitem__img-wrap')}>
                     {image && (
@@ -44,7 +52,7 @@ function PostItem({
                     )}
                 </div>
             </Link>
-            <div className={classBind('postitem__info')}>
+            <div className={classBind('postitem__info', infoClassName)}>
                 {host && (
                     <div className={classBind('postitem__label')}>
                         <p
@@ -74,11 +82,17 @@ function PostItem({
                 )}
 
                 {tags && tags.length > 0 && (
-                    <div className={classBind('postitem__tags')}>
+                    <div
+                        className={classBind(
+                            'postitem__tags',
+                            tagContainerClassName
+                        )}
+                    >
                         {tags.map((tag, index) => (
                             <div
                                 key={index}
-                                className={classBind('postitem__tag')}
+                                className={`${classBind('postitem__tag')},
+                                    ${tag.tagClassName}`}
                             >
                                 {tag.name}
                             </div>
@@ -101,7 +115,12 @@ function PostItem({
                         <div className={classBind('postitem__dot')}></div>
                     )}
                     {postDate && (
-                        <p className={classBind('postitem__date')}>
+                        <p
+                            className={classBind(
+                                'postitem__date',
+                                dateClassName
+                            )}
+                        >
                             {postDate}
                         </p>
                     )}
