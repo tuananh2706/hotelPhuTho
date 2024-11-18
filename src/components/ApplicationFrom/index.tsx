@@ -1,11 +1,15 @@
 import styles from './Application.module.scss';
 import classNames from 'classnames/bind';
+<<<<<<< HEAD
 import Button from '~/components/Button';
+=======
+>>>>>>> 39f681c2c356cb7a5ad58bcb85d0473f2228819d
 
 const classBind = classNames.bind(styles);
 
 function Application() {
     return (
+<<<<<<< HEAD
         <form className={classBind('job-form')}>
             <h2 className={classBind('job-form__heading')}>Ứng tuyển Online</h2>
 
@@ -257,6 +261,83 @@ function Application() {
 
             <Button className={classBind('form__btn')} text='Gửi ngay'></Button>
         </form>
+=======
+        <div className={classBind('application-form')}>
+            <div className={classBind('application-form__title')}>
+                Ứng tuyển Online
+            </div>
+            <div className={classBind('application-form__content')}>
+                <div className={classBind('application-form__input-group')}>
+                    <div
+                        className={classBind('application-form__personal-info')}
+                    >
+                        <div className={classBind('application-form__field')}>
+                            <label
+                                className={classBind('application-form__label')}
+                            >
+                                Họ tên
+                            </label>
+                            <div
+                                className={classBind(
+                                    'application-form__input-wrapper'
+                                )}
+                            >
+                                <div
+                                    className={classBind(
+                                        'application-form__input-text'
+                                    )}
+                                >
+                                    Nguyễn Văn A
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className={classBind('application-form__field')}>
+                            <label
+                                className={classBind('application-form__label')}
+                            >
+                                Năm sinh
+                            </label>
+                            <div
+                                className={classBind(
+                                    'application-form__input-wrapper'
+                                )}
+                            >
+                                <div
+                                    className={classBind(
+                                        'application-form__input-text'
+                                    )}
+                                >
+                                    12-12-2000
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className={classBind('application-form__field')}>
+                            <label
+                                className={classBind('application-form__label')}
+                            >
+                                Nơi ở hiện nay
+                            </label>
+                            <div
+                                className={classBind(
+                                    'application-form__input-wrapper'
+                                )}
+                            >
+                                <div
+                                    className={classBind(
+                                        'application-form__input-text'
+                                    )}
+                                >
+                                    Hà Nội
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+>>>>>>> 39f681c2c356cb7a5ad58bcb85d0473f2228819d
     );
 }
 

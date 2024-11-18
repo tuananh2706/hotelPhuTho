@@ -4,12 +4,18 @@ import image from '~/assets/images';
 import Button from '~/components/Button';
 import PostItem from '~/components/PostItem';
 import Banner from '~/components/Banner';
+<<<<<<< HEAD
 import { useFetchRecentBlogsQuery } from '~/apis/Blogs.api';
+=======
+>>>>>>> 39f681c2c356cb7a5ad58bcb85d0473f2228819d
 
 const classBind = classNames.bind(styles);
 
 function Home() {
+<<<<<<< HEAD
     const { data: recentBlogsData } = useFetchRecentBlogsQuery(3);
+=======
+>>>>>>> 39f681c2c356cb7a5ad58bcb85d0473f2228819d
     return (
         <div className={classBind('home')}>
             {/* intro */}
@@ -205,6 +211,7 @@ function Home() {
                                     'row row-cols-3 row-cols-xl-1 gx-2 gy-xl-3 gy-md-2'
                                 )}
                             >
+<<<<<<< HEAD
                                 {recentBlogsData?.map((blog) => {
                                     return (
                                         <div
@@ -224,6 +231,80 @@ function Home() {
                                         </div>
                                     );
                                 })}
+=======
+                                <div className={classBind('col')}>
+                                    <PostItem
+                                        host='Admin'
+                                        title='Thông báo kết quả lựa chọn nhà thầu 2
+                                        màn hình Led P4 Outdoor Fullcolor'
+                                        desc='Công ty Cổ phần Dịch vụ Du lịch Phú Thọ
+                                        thông báo đến các nhà thầu'
+                                        tags={[
+                                            { name: 'Sự kiện' },
+                                            { name: 'Thông báo' },
+                                            { name: 'Tin tức' }
+                                        ]}
+                                        view='10N'
+                                        postDate='20/02/2022'
+                                        image={image.post_img_1}
+                                        descClassName={classBind(
+                                            'custom-desc-home-post'
+                                        )}
+                                        titleClassName={classBind(
+                                            'custom-title-home-post'
+                                        )}
+                                    />
+                                </div>
+                                <div className={classBind('col')}>
+                                    <PostItem
+                                        host='Admin'
+                                        title='Thông báo kết quả lựa chọn nhà cung
+                                        cấp nước đá chế tác Băng Đăng'
+                                        desc='Công ty Cổ phần Dịch vụ Du lịch Phú Thọ
+                                        thông báo đến các đơn vị
+                                        tham gia chào giá cạnh tranh Hạng mục
+                                        Cung cấp nước đá để chế tạo...'
+                                        tags={[
+                                            { name: 'Sự kiện' },
+                                            { name: 'Thông báo' },
+                                            { name: 'Tin tức' }
+                                        ]}
+                                        view='10N'
+                                        postDate='20/02/2022'
+                                        image={image.post_img_2}
+                                        descClassName={classBind(
+                                            'custom-desc-home-post'
+                                        )}
+                                        titleClassName={classBind(
+                                            'custom-title-home-post'
+                                        )}
+                                    />
+                                </div>
+                                <div className={classBind('col')}>
+                                    <PostItem
+                                        host='Admin'
+                                        title='Thông báo mời chào hàng cạnh tranh 2
+                                        màn hình Led P4 Outdoor Fullcolor'
+                                        desc='CÔNG TY CỔ PHẦN DỊCH VỤ DU LỊCH PHÚ THỌ
+                                        thông báo mời chào hàng cạnh tranh lựa chọn đơn vị
+                                        Cung cấp, lắp đặt 02 màn hình Led P4'
+                                        tags={[
+                                            { name: 'Sự kiện' },
+                                            { name: 'Thông báo' },
+                                            { name: 'Tin tức' }
+                                        ]}
+                                        view='10N'
+                                        postDate='20/02/2022'
+                                        image={image.post_img_1}
+                                        descClassName={classBind(
+                                            'custom-desc-home-post'
+                                        )}
+                                        titleClassName={classBind(
+                                            'custom-title-home-post'
+                                        )}
+                                    />
+                                </div>
+>>>>>>> 39f681c2c356cb7a5ad58bcb85d0473f2228819d
                             </div>
                         </div>
                         <Button
@@ -259,7 +340,10 @@ function Home() {
                             >
                                 <div className={classBind('col')}>
                                     <PostItem
+<<<<<<< HEAD
                                         id='1'
+=======
+>>>>>>> 39f681c2c356cb7a5ad58bcb85d0473f2228819d
                                         title='Vui chơi giải trí'
                                         desc='Với 2 khu giải trí nổi tiếng TP.HCM là Công viên
                                         văn hóa Đầm Sen,và khu du
@@ -275,7 +359,10 @@ function Home() {
                                 </div>
                                 <div className={classBind('col')}>
                                     <PostItem
+<<<<<<< HEAD
                                         id='1'
+=======
+>>>>>>> 39f681c2c356cb7a5ad58bcb85d0473f2228819d
                                         title='Nhà hàng – Khách sạn'
                                         desc='Với hệ thống khách sạn Phú Thọ và Ngọc Lan đạt
                                         chuẩn 3 sao,
@@ -291,7 +378,10 @@ function Home() {
                                 </div>
                                 <div className={classBind('col')}>
                                     <PostItem
+<<<<<<< HEAD
                                         id='1'
+=======
+>>>>>>> 39f681c2c356cb7a5ad58bcb85d0473f2228819d
                                         title='Dịch vụ Lữ hành'
                                         desc='Tổ chức các tour trong và ngoài nước với Trung tâm
                                         Dịch vụ du lịch Đầm Sen.

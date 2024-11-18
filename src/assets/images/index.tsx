@@ -29,8 +29,11 @@ import document_img_5 from './document/document_5.png';
 import document_img_6 from './document/document_6.png';
 import document_img_7 from './document/document_7.png';
 import document_img_8 from './document/document_8.png';
+<<<<<<< HEAD
 import document_img_9 from './document/document_test.png';
 import document_img_10 from './document/document_test2.png';
+=======
+>>>>>>> 39f681c2c356cb7a5ad58bcb85d0473f2228819d
 
 const image = {
     Bg,
@@ -63,9 +66,13 @@ const image = {
     document_img_5,
     document_img_6,
     document_img_7,
+<<<<<<< HEAD
     document_img_8,
     document_img_9,
     document_img_10
+=======
+    document_img_8
+>>>>>>> 39f681c2c356cb7a5ad58bcb85d0473f2228819d
 };
 
 export default image;

@@ -13,6 +13,49 @@
         }
     }
 
+<<<<<<< HEAD
+=======
+    &__show {
+        margin-top: 48px;
+        max-width: 774px;
+
+        @include abstracts.screen(lg) {
+            max-width: 574px;
+        }
+    }
+
+    &__img-wrap {
+        position: relative;
+        padding-top: 147%;
+        width: 177px;
+
+        @include abstracts.screen(xl) {
+            padding-top: 126%;
+            width: 147px;
+        }
+
+        @include abstracts.screen(lg) {
+            padding-top: 131%;
+            width: 157px;
+        }
+
+        @include abstracts.screen(sm) {
+            padding-top: 131%;
+            width: 104px;
+        }
+    }
+
+    &__img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 12px;
+    }
+
+>>>>>>> 39f681c2c356cb7a5ad58bcb85d0473f2228819d
     &__main {
         margin-bottom: 80px;
         padding: 48px 54px;
