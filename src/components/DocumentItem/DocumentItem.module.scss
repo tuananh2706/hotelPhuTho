@@ -1,0 +1,102 @@
+@use '../../components/Styles/abstracts';
+
+.documents-item {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 12px 24px;
+    height: 44px;
+    background: #e6eef7;
+    border-radius: 8px;
+
+    @include abstracts.screen(lg) {
+        gap: 12px;
+        padding: 18px;
+        height: 82px;
+        border-radius: 12px;
+        background: #fff;
+        box-shadow: 0px 3.786px 18.93px 0px rgba(0, 0, 0, 0.15);
+        backdrop-filter: blur(7.5px);
+    }
+
+    @include abstracts.screen(md) {
+        padding: 16px;
+        height: 72px;
+    }
+
+    &__stt,
+    &__name,
+    &__create,
+    &__act {
+        display: flex;
+
+        align-items: center;
+
+        font-size: 1.6rem;
+        line-height: 1.31;
+    }
+
+    &__name {
+        @include abstracts.screen(lg) {
+            font-size: 1.6rem;
+            font-weight: 600;
+            color: #003f7d;
+        }
+
+        @include abstracts.screen(md) {
+            font-size: 1.4rem;
+            width: 245px;
+            line-height: 1;
+        }
+    }
+
+    &__create {
+        @include abstracts.screen(lg) {
+            font-size: 1.4rem;
+
+            color: #4d4d4d;
+        }
+
+        @include abstracts.screen(md) {
+            font-size: 1.2rem;
+            margin-top: 4px;
+        }
+    }
+
+    &__act {
+        @include abstracts.screen(lg) {
+            margin-top: -20px;
+            margin-left: 20px;
+
+            &-logo {
+                width: 28px;
+                height: 28px;
+            }
+        }
+
+        @include abstracts.screen(md) {
+            margin-top: -15px;
+
+            &-logo {
+                width: 28px;
+                height: 28px;
+            }
+        }
+    }
+
+    &__stt,
+    &__act {
+        justify-content: center;
+    }
+
+    &--header {
+        background: #0054a6;
+        height: 44px;
+        color: #fff;
+        font-size: 1.8rem;
+        font-weight: 600;
+        border-radius: 8px;
+
+        padding: 12px 24px;
+    }
+}
