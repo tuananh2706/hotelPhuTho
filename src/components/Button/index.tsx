@@ -10,16 +10,10 @@ interface ButtonProps {
     className?: string;
     to?: string;
     maxWidth?: string;
-<<<<<<< HEAD
     onClick?: () => void;
 }
 
 function Button({ text, to, className, maxWidth, onClick }: ButtonProps) {
-=======
-}
-
-function Button({ text, to, className, maxWidth }: ButtonProps) {
->>>>>>> 39f681c2c356cb7a5ad58bcb85d0473f2228819d
     const Comp: React.ElementType = to ? Link : 'button';
 
     return (
@@ -27,10 +21,7 @@ function Button({ text, to, className, maxWidth }: ButtonProps) {
             className={cx('primary-btn', className)}
             {...(to && { to })}
             style={{ maxWidth }}
-<<<<<<< HEAD
             onClick={onClick}
-=======
->>>>>>> 39f681c2c356cb7a5ad58bcb85d0473f2228819d
         >
             {text}
         </Comp>

@@ -683,121 +683,102 @@ function Jobs() {
                                         </div>
                                     );
                                 })}
+                            </div>
+                        </div>
+                        <div className={classBind('blog-paginate')}>
+                            <div className={classBind('paginate')}>
+                                <button
+                                    className={classBind('paginate__btn', {
+                                        'paginate__btn--disable': page === 1
+                                    })}
+                                    onClick={() => handlePageChange(page - 1)}
+                                    disabled={page === 1}
+                                >
+                                    <img
+                                        src={icon.paginate_next}
+                                        alt=''
+                                        style={{ rotate: '180deg' }}
+                                    />
+                                </button>
 
-                                <div className={classBind('blog-paginate')}>
-                                    <div className={classBind('paginate')}>
-                                        <button
-                                            className={classBind(
-                                                'paginate__btn',
-                                                {
-                                                    'paginate__btn--disable':
-                                                        page === 1
-                                                }
-                                            )}
-                                            onClick={() =>
-                                                handlePageChange(page - 1)
-                                            }
-                                            disabled={page === 1}
-                                        >
-                                            <img
-                                                src={icon.paginate_next}
-                                                alt=''
-                                                style={{ rotate: '180deg' }}
-                                            />
-                                        </button>
+                                {[...Array(totalPages)].map((_, index) => {
+                                    const pageNum = index + 1;
 
-                                        {[...Array(totalPages)].map(
-                                            (_, index) => {
-                                                const pageNum = index + 1;
-
-                                                if (totalPages > 3) {
-                                                    if (
-                                                        pageNum === 1 ||
-                                                        pageNum ===
-                                                            totalPages ||
-                                                        (pageNum >= page - 1 &&
-                                                            pageNum <= page + 1)
-                                                    ) {
-                                                        return (
-                                                            <button
-                                                                key={pageNum}
-                                                                className={classBind(
-                                                                    'paginate__page',
-                                                                    {
-                                                                        'paginate__page--active':
-                                                                            pageNum ===
-                                                                            page
-                                                                    }
-                                                                )}
-                                                                onClick={() =>
-                                                                    handlePageChange(
-                                                                        pageNum
-                                                                    )
-                                                                }
-                                                            >
-                                                                {pageNum}
-                                                            </button>
-                                                        );
-                                                    }
-                                                    if (
-                                                        pageNum === page - 2 ||
-                                                        pageNum === page + 2
-                                                    ) {
-                                                        return (
-                                                            <span
-                                                                key={pageNum}
-                                                                className='paginate__ellipsis'
-                                                            >
-                                                                ...
-                                                            </span>
-                                                        );
-                                                    }
-                                                    return null;
-                                                }
-
-                                                return (
-                                                    <button
-                                                        key={pageNum}
-                                                        className={classBind(
-                                                            'paginate__page',
-                                                            {
-                                                                'paginate__page--active':
-                                                                    pageNum ===
-                                                                    page
-                                                            }
-                                                        )}
-                                                        onClick={() =>
-                                                            handlePageChange(
-                                                                pageNum
-                                                            )
+                                    if (totalPages > 3) {
+                                        if (
+                                            pageNum === 1 ||
+                                            pageNum === totalPages ||
+                                            (pageNum >= page - 1 &&
+                                                pageNum <= page + 1)
+                                        ) {
+                                            return (
+                                                <button
+                                                    key={pageNum}
+                                                    className={classBind(
+                                                        'paginate__page',
+                                                        {
+                                                            'paginate__page--active':
+                                                                pageNum === page
                                                         }
-                                                    >
-                                                        {pageNum}
-                                                    </button>
-                                                );
-                                            }
-                                        )}
+                                                    )}
+                                                    onClick={() =>
+                                                        handlePageChange(
+                                                            pageNum
+                                                        )
+                                                    }
+                                                >
+                                                    {pageNum}
+                                                </button>
+                                            );
+                                        }
+                                        if (
+                                            pageNum === page - 2 ||
+                                            pageNum === page + 2
+                                        ) {
+                                            return (
+                                                <span
+                                                    key={pageNum}
+                                                    className='paginate__ellipsis'
+                                                >
+                                                    ...
+                                                </span>
+                                            );
+                                        }
+                                        return null;
+                                    }
 
+                                    return (
                                         <button
+                                            key={pageNum}
                                             className={classBind(
-                                                'paginate__btn',
+                                                'paginate__page',
                                                 {
-                                                    'paginate__btn--disable':
-                                                        page === totalPages
+                                                    'paginate__page--active':
+                                                        pageNum === page
                                                 }
                                             )}
                                             onClick={() =>
-                                                handlePageChange(page + 1)
+                                                handlePageChange(pageNum)
                                             }
-                                            disabled={page === totalPages}
                                         >
-                                            <img
-                                                src={icon.paginate_next}
-                                                alt='iconpaginate'
-                                            />
+                                            {pageNum}
                                         </button>
-                                    </div>
-                                </div>
+                                    );
+                                })}
+
+                                <button
+                                    className={classBind('paginate__btn', {
+                                        'paginate__btn--disable':
+                                            page === totalPages
+                                    })}
+                                    onClick={() => handlePageChange(page + 1)}
+                                    disabled={page === totalPages}
+                                >
+                                    <img
+                                        src={icon.paginate_next}
+                                        alt='iconpaginate'
+                                    />
+                                </button>
                             </div>
                         </div>
                     </div>

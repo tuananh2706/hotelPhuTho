@@ -219,8 +219,6 @@ function JobDetail() {
                         </div>
                     </div>
                 </div>
-
-                {/* gọi tuyển dụng */}
                 <Application />
             </div>
         </div>

@@ -1,17 +1,11 @@
 import { useRoutes } from 'react-router-dom';
 import MainLayout from '~/layouts/MainLayout';
 import Home from '~/pages/Home';
-<<<<<<< HEAD
 import Jobs from './pages/Jobs';
 import Documents from './pages/Documents';
 import Blogs from './pages/Blogs';
 import BlogDetails from './pages/BlogDetail';
 import JobDetail from './pages/JobDetail';
-=======
-import Jobs from './pages/Jobs/Jobs';
-import Documents from './pages/Documents';
-import Blogs from './pages/Blogs';
->>>>>>> 39f681c2c356cb7a5ad58bcb85d0473f2228819d
 
 export default function useRouteElements() {
     const routeElement = useRoutes([
@@ -32,7 +26,6 @@ export default function useRouteElements() {
             )
         },
         {
-<<<<<<< HEAD
             path: '/blog-details/',
             element: (
                 <MainLayout>
@@ -41,8 +34,6 @@ export default function useRouteElements() {
             )
         },
         {
-=======
->>>>>>> 39f681c2c356cb7a5ad58bcb85d0473f2228819d
             path: '/documents',
             element: (
                 <MainLayout>
@@ -57,7 +48,6 @@ export default function useRouteElements() {
                     <Jobs />
                 </MainLayout>
             )
-<<<<<<< HEAD
         },
         {
             path: '/job-details',
@@ -66,8 +56,6 @@ export default function useRouteElements() {
                     <JobDetail />
                 </MainLayout>
             )
-=======
->>>>>>> 39f681c2c356cb7a5ad58bcb85d0473f2228819d
         }
     ]);
 

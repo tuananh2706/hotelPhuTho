@@ -5,19 +5,12 @@ import classNames from 'classnames/bind';
 const classBind = classNames.bind(styles);
 
 interface PostItemProps {
-<<<<<<< HEAD
     id: string;
-=======
->>>>>>> 39f681c2c356cb7a5ad58bcb85d0473f2228819d
     infoClassName?: string;
     host?: string;
     title: string;
     desc?: string;
-<<<<<<< HEAD
     tags?: string[];
-=======
-    tags?: { name: string; tagClassName?: string }[];
->>>>>>> 39f681c2c356cb7a5ad58bcb85d0473f2228819d
     view?: string;
     postDate?: string;
     image?: string;
@@ -31,10 +24,7 @@ interface PostItemProps {
 }
 
 function PostItem({
-<<<<<<< HEAD
     id,
-=======
->>>>>>> 39f681c2c356cb7a5ad58bcb85d0473f2228819d
     host,
     title,
     desc,
@@ -52,22 +42,13 @@ function PostItem({
     mini = false
 }: PostItemProps) {
     return (
-<<<<<<< HEAD
         <article className={classBind('postitem', { 'postitem--mini': mini })}>
             <Link to={`/blog-details?id=${id}`}>
-=======
-        <article className={classBind('postitem', { 'postcard--mini': mini })}>
-            <Link to='#'>
->>>>>>> 39f681c2c356cb7a5ad58bcb85d0473f2228819d
                 <div className={classBind('postitem__img-wrap')}>
                     {image && (
                         <img
                             src={image}
-<<<<<<< HEAD
                             alt='Post image'
-=======
-                            alt=''
->>>>>>> 39f681c2c356cb7a5ad58bcb85d0473f2228819d
                             className={classBind('postitem__img')}
                         />
                     )}
@@ -112,16 +93,9 @@ function PostItem({
                         {tags.map((tag, index) => (
                             <div
                                 key={index}
-<<<<<<< HEAD
                                 className={classBind('postitem__tag', tags)}
                             >
                                 {tag}
-=======
-                                className={`${classBind('postitem__tag')},
-                                    ${tag.tagClassName}`}
-                            >
-                                {tag.name}
->>>>>>> 39f681c2c356cb7a5ad58bcb85d0473f2228819d
                             </div>
                         ))}
                     </div>

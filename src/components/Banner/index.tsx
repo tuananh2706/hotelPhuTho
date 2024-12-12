@@ -12,7 +12,7 @@ const Banner = () => {
                     alt=''
                     className={classBind('home-banner__img--1', 'd-md-none')}
                 />
-                <div className={classBind('caption')}>
+                <div className={classBind('caption', 'caption-right')}>
                     Kết quả đấu giá giữ xe tại CVVH Đầm Sen 2022
                 </div>
             </div>
@@ -22,7 +22,7 @@ const Banner = () => {
                     alt=''
                     className={classBind('home-banner__img--2')}
                 />
-                <div className={classBind('caption')}>
+                <div className={classBind('caption', 'caption-right')}>
                     Kết quả đấu giá giữ xe tại CVVH Đầm Sen 2022
                 </div>
             </div>
@@ -32,7 +32,7 @@ const Banner = () => {
                     alt=''
                     className={classBind('home-banner__img--3')}
                 />
-                <div className={classBind('caption')}>
+                <div className={classBind('caption', 'caption-main')}>
                     Kết quả đấu giá giữ xe tại CVVH Đầm Sen 2022
                 </div>
             </div>
@@ -42,7 +42,7 @@ const Banner = () => {
                     alt=''
                     className={classBind('home-banner__img--4')}
                 />
-                <div className={classBind('caption')}>
+                <div className={classBind('caption', 'caption-left')}>
                     Kết quả đấu giá giữ xe tại CVVH Đầm Sen 2022
                 </div>
             </div>
@@ -52,7 +52,7 @@ const Banner = () => {
                     alt=''
                     className={classBind('home-banner__img--5', 'd-md-none')}
                 />
-                <div className={classBind('caption')}>
+                <div className={classBind('caption', 'caption-left')}>
                     Kết quả đấu giá giữ xe tại CVVH Đầm Sen 2022
                 </div>
             </div>{' '}

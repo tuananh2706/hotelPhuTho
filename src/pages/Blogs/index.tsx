@@ -1,44 +1,47 @@
 import classNames from 'classnames/bind';
-import type { DatePickerProps } from 'antd';
 import { DatePicker, Space } from 'antd';
-<<<<<<< HEAD
 import { Carousel } from 'antd';
 import { Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-=======
-import { Link } from 'react-router-dom';
-import React, { useState } from 'react';
->>>>>>> 39f681c2c356cb7a5ad58bcb85d0473f2228819d
 
 import TitleMain from '~/components/TitleMain';
 import styles from './Blogs.module.scss';
 import icon from '~/assets/icons';
-<<<<<<< HEAD
 // import image from '~/assets/images';
 import PostItem from '~/components/PostItem';
 import {
     useFetchBlogsPaginatedQuery,
-    useFetchRecentBlogsQuery
+    useFetchRecentBlogsQuery,
+    useFetchBlogsByTitleQuery
 } from '~/apis/Blogs.api';
 import { Blog } from '~/utils/types';
 import Button from '~/components/Button';
-=======
-import image from '~/assets/images';
-import PostItem from '~/components/PostItem';
->>>>>>> 39f681c2c356cb7a5ad58bcb85d0473f2228819d
 
 const classBind = classNames.bind(styles);
 
-const onChange: DatePickerProps['onChange'] = (date, dateString) => {
-    console.log(date, dateString);
-};
-
 function Blogs() {
-<<<<<<< HEAD
     const [page, setPage] = useState(1);
     const [limit, setLimit] = useState(12);
     const [tag, setTag] = useState<string | undefined>();
     const [isFilterOpen, setIsFilterOpen] = useState(false);
+
+    const [searchTerm, setSearchTerm] = useState('');
+
+    const { data, error, isLoading } = useFetchBlogsByTitleQuery({
+        title: searchTerm || ''
+    });
+
+    const { data: Blog } = useFetchBlogsPaginatedQuery({
+        page,
+        limit,
+        tag
+    });
+
+    const { data: recentBlogsData } = useFetchRecentBlogsQuery(5);
+
+    const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        setSearchTerm(event.target.value);
+    };
 
     const toggleFilter = () => {
         setIsFilterOpen((prev) => !prev);
@@ -64,13 +67,17 @@ function Blogs() {
         return () => window.removeEventListener('resize', updateLimit);
     }, []);
 
-    const { data: Blog } = useFetchBlogsPaginatedQuery({
-        page,
-        limit,
-        tag
-    });
+    if (isLoading) {
+        return <div>Loading...</div>;
+    }
 
-    const { data: recentBlogsData } = useFetchRecentBlogsQuery(5);
+    if (error) {
+        return <div>Error loading blogs:</div>;
+    }
+
+    if (!data) {
+        return <div>No data available</div>;
+    }
 
     if (!Blog) {
         return <div>No data available</div>;
@@ -83,530 +90,6 @@ function Blogs() {
             setPage(newPage);
         }
     };
-=======
-    const posts = [
-        {
-            title: 'Thông báo: đấu giá giữ xe tại CVHH Đầm Sen',
-            tags: [
-                { name: 'Sự kiện' },
-                { name: 'Thông báo' },
-                { name: 'Tin tức' }
-            ],
-            view: '10N',
-            postDate: '20/02/2022',
-            image: image.blog_img_3
-        },
-        {
-            title: 'Thông báo: đấu giá giữ xe tại CVHH Đầm Sen',
-            tags: [
-                { name: 'Sự kiện' },
-                { name: 'Thông báo' },
-                { name: 'Tin tức' }
-            ],
-            view: '10N',
-            postDate: '20/02/2022',
-            image: image.blog_img_1
-        },
-        {
-            title: 'Thông báo: đấu giá giữ xe tại CVHH Đầm Sen',
-            tags: [
-                { name: 'Sự kiện' },
-                { name: 'Thông báo' },
-                { name: 'Tin tức' }
-            ],
-            view: '10N',
-            postDate: '20/02/2022',
-            image: image.blog_img_2
-        },
-        {
-            title: 'Thông báo: đấu giá giữ xe tại CVHH Đầm Sen',
-            tags: [
-                { name: 'Sự kiện' },
-                { name: 'Thông báo' },
-                { name: 'Tin tức' }
-            ],
-            view: '10N',
-            postDate: '20/02/2022',
-            image: image.blog_img_4
-        },
-        {
-            title: 'Thông báo: đấu giá giữ xe tại CVHH Đầm Sen',
-            tags: [
-                { name: 'Sự kiện' },
-                { name: 'Thông báo' },
-                { name: 'Tin tức' }
-            ],
-            view: '10N',
-            postDate: '20/02/2022',
-            image: image.blog_img_5
-        },
-        {
-            title: 'Thông báo: đấu giá giữ xe tại CVHH Đầm Sen',
-            tags: [
-                { name: 'Sự kiện' },
-                { name: 'Thông báo' },
-                { name: 'Tin tức' }
-            ],
-            view: '10N',
-            postDate: '20/02/2022',
-            image: image.blog_img_6
-        },
-        {
-            title: 'Thông báo: đấu giá giữ xe tại CVHH Đầm Sen',
-            tags: [
-                { name: 'Sự kiện' },
-                { name: 'Thông báo' },
-                { name: 'Tin tức' }
-            ],
-            view: '10N',
-            postDate: '20/02/2022',
-            image: image.blog_img_7
-        },
-        {
-            title: 'Thông báo: đấu giá giữ xe tại CVHH Đầm Sen',
-            tags: [
-                { name: 'Sự kiện' },
-                { name: 'Thông báo' },
-                { name: 'Tin tức' }
-            ],
-            view: '10N',
-            postDate: '20/02/2022',
-            image: image.blog_img_8
-        },
-        {
-            title: 'Liên hoan Ẩm thực Đất Phương Nam 2019 có gì mới?',
-            tags: [
-                { name: 'Sự kiện' },
-                { name: 'Thông báo' },
-                { name: 'Tin tức' }
-            ],
-            view: '10N',
-            postDate: '20/02/2022',
-            image: image.blog_img_9
-        },
-        {
-            title: 'Liên hoan Ẩm thực Đất Phương Nam 2019 có gì mới?',
-            tags: [
-                { name: 'Sự kiện' },
-                { name: 'Thông báo' },
-                { name: 'Tin tức' }
-            ],
-            view: '10N',
-            postDate: '20/02/2022',
-            image: image.blog_img_10
-        },
-        {
-            title: 'Liên hoan Ẩm thực Đất Phương Nam 2019 có gì mới?',
-            tags: [
-                { name: 'Sự kiện' },
-                { name: 'Thông báo' },
-                { name: 'Tin tức' }
-            ],
-            view: '10N',
-            postDate: '20/02/2022',
-            image: image.blog_img_11
-        },
-        {
-            title: 'Màn hình nước Singapore sẽ có tại Đầm Sen vào 27/4/2019',
-            tags: [
-                { name: 'Sự kiện' },
-                { name: 'Thông báo' },
-                { name: 'Tin tức' }
-            ],
-            view: '10N',
-            postDate: '20/02/2022',
-            image: image.blog_img_12
-        },
-        {
-            title: 'Thông báo: đấu giá giữ xe tại CVHH Đầm Sen',
-            tags: [
-                { name: 'Sự kiện' },
-                { name: 'Thông báo' },
-                { name: 'Tin tức' }
-            ],
-            view: '10N',
-            postDate: '20/02/2022',
-            image: image.blog_img_3
-        },
-        {
-            title: 'Thông báo: đấu giá giữ xe tại CVHH Đầm Sen',
-            tags: [
-                { name: 'Sự kiện' },
-                { name: 'Thông báo' },
-                { name: 'Tin tức' }
-            ],
-            view: '10N',
-            postDate: '20/02/2022',
-            image: image.blog_img_1
-        },
-        {
-            title: 'Thông báo: đấu giá giữ xe tại CVHH Đầm Sen',
-            tags: [
-                { name: 'Sự kiện' },
-                { name: 'Thông báo' },
-                { name: 'Tin tức' }
-            ],
-            view: '10N',
-            postDate: '20/02/2022',
-            image: image.blog_img_2
-        },
-        {
-            title: 'Thông báo: đấu giá giữ xe tại CVHH Đầm Sen',
-            tags: [
-                { name: 'Sự kiện' },
-                { name: 'Thông báo' },
-                { name: 'Tin tức' }
-            ],
-            view: '10N',
-            postDate: '20/02/2022',
-            image: image.blog_img_4
-        },
-        {
-            title: 'Thông báo: đấu giá giữ xe tại CVHH Đầm Sen',
-            tags: [
-                { name: 'Sự kiện' },
-                { name: 'Thông báo' },
-                { name: 'Tin tức' }
-            ],
-            view: '10N',
-            postDate: '20/02/2022',
-            image: image.blog_img_5
-        },
-        {
-            title: 'Thông báo: đấu giá giữ xe tại CVHH Đầm Sen',
-            tags: [
-                { name: 'Sự kiện' },
-                { name: 'Thông báo' },
-                { name: 'Tin tức' }
-            ],
-            view: '10N',
-            postDate: '20/02/2022',
-            image: image.blog_img_6
-        },
-        {
-            title: 'Thông báo: đấu giá giữ xe tại CVHH Đầm Sen',
-            tags: [
-                { name: 'Sự kiện' },
-                { name: 'Thông báo' },
-                { name: 'Tin tức' }
-            ],
-            view: '10N',
-            postDate: '20/02/2022',
-            image: image.blog_img_7
-        },
-        {
-            title: 'Thông báo: đấu giá giữ xe tại CVHH Đầm Sen',
-            tags: [
-                { name: 'Sự kiện' },
-                { name: 'Thông báo' },
-                { name: 'Tin tức' }
-            ],
-            view: '10N',
-            postDate: '20/02/2022',
-            image: image.blog_img_8
-        },
-        {
-            title: 'Liên hoan Ẩm thực Đất Phương Nam 2019 có gì mới?',
-            tags: [
-                { name: 'Sự kiện' },
-                { name: 'Thông báo' },
-                { name: 'Tin tức' }
-            ],
-            view: '10N',
-            postDate: '20/02/2022',
-            image: image.blog_img_9
-        },
-        {
-            title: 'Liên hoan Ẩm thực Đất Phương Nam 2019 có gì mới?',
-            tags: [
-                { name: 'Sự kiện' },
-                { name: 'Thông báo' },
-                { name: 'Tin tức' }
-            ],
-            view: '10N',
-            postDate: '20/02/2022',
-            image: image.blog_img_10
-        },
-        {
-            title: 'Liên hoan Ẩm thực Đất Phương Nam 2019 có gì mới?',
-            tags: [
-                { name: 'Sự kiện' },
-                { name: 'Thông báo' },
-                { name: 'Tin tức' }
-            ],
-            view: '10N',
-            postDate: '20/02/2022',
-            image: image.blog_img_11
-        },
-        {
-            title: 'Thông báo: đấu giá giữ xe tại CVHH Đầm Sen',
-            tags: [
-                { name: 'Sự kiện' },
-                { name: 'Thông báo' },
-                { name: 'Tin tức' }
-            ],
-            view: '10N',
-            postDate: '20/02/2022',
-            image: image.blog_img_1
-        },
-        {
-            title: 'Thông báo: đấu giá giữ xe tại CVHH Đầm Sen',
-            tags: [
-                { name: 'Sự kiện' },
-                { name: 'Thông báo' },
-                { name: 'Tin tức' }
-            ],
-            view: '10N',
-            postDate: '20/02/2022',
-            image: image.blog_img_2
-        },
-        {
-            title: 'Thông báo: đấu giá giữ xe tại CVHH Đầm Sen',
-            tags: [
-                { name: 'Sự kiện' },
-                { name: 'Thông báo' },
-                { name: 'Tin tức' }
-            ],
-            view: '10N',
-            postDate: '20/02/2022',
-            image: image.blog_img_4
-        },
-        {
-            title: 'Thông báo: đấu giá giữ xe tại CVHH Đầm Sen',
-            tags: [
-                { name: 'Sự kiện' },
-                { name: 'Thông báo' },
-                { name: 'Tin tức' }
-            ],
-            view: '10N',
-            postDate: '20/02/2022',
-            image: image.blog_img_5
-        },
-        {
-            title: 'Thông báo: đấu giá giữ xe tại CVHH Đầm Sen',
-            tags: [
-                { name: 'Sự kiện' },
-                { name: 'Thông báo' },
-                { name: 'Tin tức' }
-            ],
-            view: '10N',
-            postDate: '20/02/2022',
-            image: image.blog_img_6
-        },
-        {
-            title: 'Thông báo: đấu giá giữ xe tại CVHH Đầm Sen',
-            tags: [
-                { name: 'Sự kiện' },
-                { name: 'Thông báo' },
-                { name: 'Tin tức' }
-            ],
-            view: '10N',
-            postDate: '20/02/2022',
-            image: image.blog_img_7
-        },
-        {
-            title: 'Thông báo: đấu giá giữ xe tại CVHH Đầm Sen',
-            tags: [
-                { name: 'Sự kiện' },
-                { name: 'Thông báo' },
-                { name: 'Tin tức' }
-            ],
-            view: '10N',
-            postDate: '20/02/2022',
-            image: image.blog_img_8
-        },
-        {
-            title: 'Liên hoan Ẩm thực Đất Phương Nam 2019 có gì mới?',
-            tags: [
-                { name: 'Sự kiện' },
-                { name: 'Thông báo' },
-                { name: 'Tin tức' }
-            ],
-            view: '10N',
-            postDate: '20/02/2022',
-            image: image.blog_img_9
-        },
-        {
-            title: 'Liên hoan Ẩm thực Đất Phương Nam 2019 có gì mới?',
-            tags: [
-                { name: 'Sự kiện' },
-                { name: 'Thông báo' },
-                { name: 'Tin tức' }
-            ],
-            view: '10N',
-            postDate: '20/02/2022',
-            image: image.blog_img_10
-        },
-        {
-            title: 'Liên hoan Ẩm thực Đất Phương Nam 2019 có gì mới?',
-            tags: [
-                { name: 'Sự kiện' },
-                { name: 'Thông báo' },
-                { name: 'Tin tức' }
-            ],
-            view: '10N',
-            postDate: '20/02/2022',
-            image: image.blog_img_11
-        },
-        {
-            title: 'Màn hình nước Singapore sẽ có tại Đầm Sen vào 27/4/2019',
-            tags: [
-                { name: 'Sự kiện' },
-                { name: 'Thông báo' },
-                { name: 'Tin tức' }
-            ],
-            view: '10N',
-            postDate: '20/02/2022',
-            image: image.blog_img_12
-        },
-        {
-            title: 'Thông báo: đấu giá giữ xe tại CVHH Đầm Sen',
-            tags: [
-                { name: 'Sự kiện' },
-                { name: 'Thông báo' },
-                { name: 'Tin tức' }
-            ],
-            view: '10N',
-            postDate: '20/02/2022',
-            image: image.blog_img_3
-        },
-        {
-            title: 'Thông báo: đấu giá giữ xe tại CVHH Đầm Sen',
-            tags: [
-                { name: 'Sự kiện' },
-                { name: 'Thông báo' },
-                { name: 'Tin tức' }
-            ],
-            view: '10N',
-            postDate: '20/02/2022',
-            image: image.blog_img_1
-        },
-        {
-            title: 'Thông báo: đấu giá giữ xe tại CVHH Đầm Sen',
-            tags: [
-                { name: 'Sự kiện' },
-                { name: 'Thông báo' },
-                { name: 'Tin tức' }
-            ],
-            view: '10N',
-            postDate: '20/02/2022',
-            image: image.blog_img_2
-        },
-        {
-            title: 'Thông báo: đấu giá giữ xe tại CVHH Đầm Sen',
-            tags: [
-                { name: 'Sự kiện' },
-                { name: 'Thông báo' },
-                { name: 'Tin tức' }
-            ],
-            view: '10N',
-            postDate: '20/02/2022',
-            image: image.blog_img_4
-        },
-        {
-            title: 'Thông báo: đấu giá giữ xe tại CVHH Đầm Sen',
-            tags: [
-                { name: 'Sự kiện' },
-                { name: 'Thông báo' },
-                { name: 'Tin tức' }
-            ],
-            view: '10N',
-            postDate: '20/02/2022',
-            image: image.blog_img_5
-        },
-        {
-            title: 'Thông báo: đấu giá giữ xe tại CVHH Đầm Sen',
-            tags: [
-                { name: 'Sự kiện' },
-                { name: 'Thông báo' },
-                { name: 'Tin tức' }
-            ],
-            view: '10N',
-            postDate: '20/02/2022',
-            image: image.blog_img_6
-        },
-        {
-            title: 'Thông báo: đấu giá giữ xe tại CVHH Đầm Sen',
-            tags: [
-                { name: 'Sự kiện' },
-                { name: 'Thông báo' },
-                { name: 'Tin tức' }
-            ],
-            view: '10N',
-            postDate: '20/02/2022',
-            image: image.blog_img_7
-        },
-        {
-            title: 'Thông báo: đấu giá giữ xe tại CVHH Đầm Sen',
-            tags: [
-                { name: 'Sự kiện' },
-                { name: 'Thông báo' },
-                { name: 'Tin tức' }
-            ],
-            view: '10N',
-            postDate: '20/02/2022',
-            image: image.blog_img_8
-        },
-        {
-            title: 'Liên hoan Ẩm thực Đất Phương Nam 2019 có gì mới?',
-            tags: [
-                { name: 'Sự kiện' },
-                { name: 'Thông báo' },
-                { name: 'Tin tức' }
-            ],
-            view: '10N',
-            postDate: '20/02/2022',
-            image: image.blog_img_9
-        },
-        {
-            title: 'Liên hoan Ẩm thực Đất Phương Nam 2019 có gì mới?',
-            tags: [
-                { name: 'Sự kiện' },
-                { name: 'Thông báo' },
-                { name: 'Tin tức' }
-            ],
-            view: '10N',
-            postDate: '20/02/2022',
-            image: image.blog_img_10
-        },
-        {
-            title: 'Liên hoan Ẩm thực Đất Phương Nam 2019 có gì mới?',
-            tags: [
-                { name: 'Sự kiện' },
-                { name: 'Thông báo' },
-                { name: 'Tin tức' }
-            ],
-            view: '10N',
-            postDate: '20/02/2022',
-            image: image.blog_img_11
-        },
-        {
-            title: 'Màn hình nước Singapore sẽ có tại Đầm Sen vào 27/4/2019',
-            tags: [
-                { name: 'Sự kiện' },
-                { name: 'Thông báo' },
-                { name: 'Tin tức' }
-            ],
-            view: '10N',
-            postDate: '20/02/2022',
-            image: image.blog_img_12
-        }
-    ];
-
-    const [currentPage, setCurrentPage] = useState(1);
-    const itemsPerPage = 12;
-
-    const indexOfLastItem = currentPage * itemsPerPage;
-    const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-    const currentItems = posts.slice(indexOfFirstItem, indexOfLastItem);
-
-    const totalPages = Math.ceil(posts.length / itemsPerPage);
-
-    const paginate = (pageNumber: number) => setCurrentPage(pageNumber);
-
-    const canGoBack = currentPage > 1;
-    const canGoForward = currentPage < totalPages;
->>>>>>> 39f681c2c356cb7a5ad58bcb85d0473f2228819d
     return (
         <div className={classBind('blog')}>
             <div className={classBind('container')}>
@@ -622,7 +105,6 @@ function Blogs() {
                                     'col-9 col-xxl-8 col-lg-12'
                                 )}
                             >
-<<<<<<< HEAD
                                 <section>
                                     <Carousel
                                         arrows
@@ -702,123 +184,6 @@ function Blogs() {
                                             );
                                         })}
                                     </Carousel>
-=======
-                                <section className={classBind('blog-slider')}>
-                                    <div
-                                        className={classBind(
-                                            'blog-slider__img-wrap'
-                                        )}
-                                    >
-                                        <img
-                                            src={image.post_img_1}
-                                            alt=''
-                                            className={classBind(
-                                                'blog-slider__img'
-                                            )}
-                                        />
-                                    </div>
-                                    <div
-                                        className={classBind(
-                                            'blog-slider__content'
-                                        )}
-                                    >
-                                        <div
-                                            className={classBind(
-                                                'blog-slider__info'
-                                            )}
-                                        >
-                                            <h2
-                                                className={classBind(
-                                                    'blog-slider__heading'
-                                                )}
-                                            >
-                                                Thông báo mời chào giá cạnh
-                                                tranh cung cấp nước đá chế tác
-                                                Băng Đăng
-                                            </h2>
-                                            <p
-                                                className={classBind(
-                                                    'blog-slider__desc',
-                                                    'd-md-none'
-                                                )}
-                                            >
-                                                THÔNG BÁO MỜI CHÀO GIÁ CẠNH
-                                                TRANH CÔNG TY CỔ PHẦN DỊCH VỤ DU
-                                                LỊCH PHÚ THỌ tổ chức chào giá
-                                                cạnh tranh lựa chọn đơn vị Cung
-                                                cấp nước đá để chế tác Băng Đăng
-                                                tại Công viên Văn hóa Đầm Sen.
-                                            </p>
-                                        </div>
-
-                                        <div
-                                            className={classBind(
-                                                'blog-slider__act'
-                                            )}
-                                        >
-                                            <div
-                                                className={classBind(
-                                                    'blog-slider__move'
-                                                )}
-                                            >
-                                                <button
-                                                    className={classBind(
-                                                        'blog-slider__btn'
-                                                    )}
-                                                >
-                                                    <img
-                                                        src={icon.prev_prev}
-                                                        alt=''
-                                                        className={classBind(
-                                                            'blog-slider__btn-prev'
-                                                        )}
-                                                    />
-                                                </button>
-                                                <button
-                                                    className={classBind(
-                                                        'blog-slider__btn'
-                                                    )}
-                                                >
-                                                    <img
-                                                        src={icon.prev_next}
-                                                        alt=''
-                                                        className={classBind(
-                                                            'blog-slider__btn-next'
-                                                        )}
-                                                    />
-                                                </button>
-                                            </div>
-
-                                            <div
-                                                className={classBind(
-                                                    'blog-slider__paginate'
-                                                )}
-                                            >
-                                                <div
-                                                    className={classBind(
-                                                        // 'blog-slider__page',
-                                                        'blog-slider__page--active'
-                                                    )}
-                                                ></div>
-                                                <div
-                                                    className={classBind(
-                                                        'blog-slider__page'
-                                                    )}
-                                                ></div>
-                                                <div
-                                                    className={classBind(
-                                                        'blog-slider__page'
-                                                    )}
-                                                ></div>
-                                                <div
-                                                    className={classBind(
-                                                        'blog-slider__page'
-                                                    )}
-                                                ></div>
-                                            </div>
-                                        </div>
-                                    </div>
->>>>>>> 39f681c2c356cb7a5ad58bcb85d0473f2228819d
                                 </section>
                             </div>
 
@@ -836,7 +201,6 @@ function Blogs() {
                                         Bài mới nhất
                                     </h2>
                                     <ul className={classBind('new-blog__list')}>
-<<<<<<< HEAD
                                         {recentBlogsData?.map((Blog) => {
                                             return (
                                                 <li key={Blog.id}>
@@ -913,317 +277,6 @@ function Blogs() {
                                                 </li>
                                             );
                                         })}
-=======
-                                        <li>
-                                            <article
-                                                className={classBind(
-                                                    'new-blog__item'
-                                                )}
-                                            >
-                                                <div
-                                                    className={classBind(
-                                                        'new-blog__img-wrap'
-                                                    )}
-                                                >
-                                                    <img
-                                                        src={image.post_img_1}
-                                                        alt=''
-                                                        className={classBind(
-                                                            'new-blog__img'
-                                                        )}
-                                                    />
-                                                </div>
-
-                                                <div
-                                                    className={classBind(
-                                                        'new-blog__info'
-                                                    )}
-                                                >
-                                                    <h3
-                                                        className={classBind(
-                                                            'new-blog__title'
-                                                        )}
-                                                    >
-                                                        Thông báo đấu giá giữ xe
-                                                        tại CVHH Đầm Sen
-                                                    </h3>
-                                                    <div
-                                                        className={classBind(
-                                                            'new-blog__data'
-                                                        )}
-                                                    >
-                                                        <p
-                                                            className={classBind(
-                                                                'new-blog__view'
-                                                            )}
-                                                        >
-                                                            10N lượt xem
-                                                        </p>
-                                                        <div
-                                                            className={classBind(
-                                                                'new-blog__dot'
-                                                            )}
-                                                        ></div>
-                                                        <p
-                                                            className={classBind(
-                                                                'new-blog__view'
-                                                            )}
-                                                        >
-                                                            20/02/2022
-                                                        </p>
-                                                    </div>
-                                                </div>
-                                            </article>
-                                        </li>
-
-                                        <li>
-                                            <article
-                                                className={classBind(
-                                                    'new-blog__item'
-                                                )}
-                                            >
-                                                <div
-                                                    className={classBind(
-                                                        'new-blog__img-wrap'
-                                                    )}
-                                                >
-                                                    <img
-                                                        src={image.post_img_2}
-                                                        alt=''
-                                                        className={classBind(
-                                                            'new-blog__img'
-                                                        )}
-                                                    />
-                                                </div>
-
-                                                <div
-                                                    className={classBind(
-                                                        'new-blog__info'
-                                                    )}
-                                                >
-                                                    <h3
-                                                        className={classBind(
-                                                            'new-blog__title'
-                                                        )}
-                                                    >
-                                                        Thông báo đấu giá giữ xe
-                                                        tại CVHH Đầm Sen
-                                                    </h3>
-                                                    <div
-                                                        className={classBind(
-                                                            'new-blog__data'
-                                                        )}
-                                                    >
-                                                        <p
-                                                            className={classBind(
-                                                                'new-blog__view'
-                                                            )}
-                                                        >
-                                                            10N lượt xem
-                                                        </p>
-                                                        <div
-                                                            className={classBind(
-                                                                'new-blog__dot'
-                                                            )}
-                                                        ></div>
-                                                        <p
-                                                            className={classBind(
-                                                                'new-blog__view'
-                                                            )}
-                                                        >
-                                                            20/02/2022
-                                                        </p>
-                                                    </div>
-                                                </div>
-                                            </article>
-                                        </li>
-
-                                        <li>
-                                            <article
-                                                className={classBind(
-                                                    'new-blog__item'
-                                                )}
-                                            >
-                                                <div
-                                                    className={classBind(
-                                                        'new-blog__img-wrap'
-                                                    )}
-                                                >
-                                                    <img
-                                                        src={image.post_img_1}
-                                                        alt=''
-                                                        className={classBind(
-                                                            'new-blog__img'
-                                                        )}
-                                                    />
-                                                </div>
-
-                                                <div
-                                                    className={classBind(
-                                                        'new-blog__info'
-                                                    )}
-                                                >
-                                                    <h3
-                                                        className={classBind(
-                                                            'new-blog__title'
-                                                        )}
-                                                    >
-                                                        Thông báo đấu giá giữ xe
-                                                        tại CVHH Đầm Sen
-                                                    </h3>
-                                                    <div
-                                                        className={classBind(
-                                                            'new-blog__data'
-                                                        )}
-                                                    >
-                                                        <p
-                                                            className={classBind(
-                                                                'new-blog__view'
-                                                            )}
-                                                        >
-                                                            10N lượt xem
-                                                        </p>
-                                                        <div
-                                                            className={classBind(
-                                                                'new-blog__dot'
-                                                            )}
-                                                        ></div>
-                                                        <p
-                                                            className={classBind(
-                                                                'new-blog__view'
-                                                            )}
-                                                        >
-                                                            20/02/2022
-                                                        </p>
-                                                    </div>
-                                                </div>
-                                            </article>
-                                        </li>
-
-                                        <li>
-                                            <article
-                                                className={classBind(
-                                                    'new-blog__item'
-                                                )}
-                                            >
-                                                <div
-                                                    className={classBind(
-                                                        'new-blog__img-wrap'
-                                                    )}
-                                                >
-                                                    <img
-                                                        src={image.post_img_2}
-                                                        alt=''
-                                                        className={classBind(
-                                                            'new-blog__img'
-                                                        )}
-                                                    />
-                                                </div>
-
-                                                <div
-                                                    className={classBind(
-                                                        'new-blog__info'
-                                                    )}
-                                                >
-                                                    <h3
-                                                        className={classBind(
-                                                            'new-blog__title'
-                                                        )}
-                                                    >
-                                                        Thông báo đấu giá giữ xe
-                                                        tại CVHH Đầm Sen
-                                                    </h3>
-                                                    <div
-                                                        className={classBind(
-                                                            'new-blog__data'
-                                                        )}
-                                                    >
-                                                        <p
-                                                            className={classBind(
-                                                                'new-blog__view'
-                                                            )}
-                                                        >
-                                                            10N lượt xem
-                                                        </p>
-                                                        <div
-                                                            className={classBind(
-                                                                'new-blog__dot'
-                                                            )}
-                                                        ></div>
-                                                        <p
-                                                            className={classBind(
-                                                                'new-blog__view'
-                                                            )}
-                                                        >
-                                                            20/02/2022
-                                                        </p>
-                                                    </div>
-                                                </div>
-                                            </article>
-                                        </li>
-
-                                        <li>
-                                            <article
-                                                className={classBind(
-                                                    'new-blog__item'
-                                                )}
-                                            >
-                                                <div
-                                                    className={classBind(
-                                                        'new-blog__img-wrap'
-                                                    )}
-                                                >
-                                                    <img
-                                                        src={image.blog_img_3}
-                                                        alt=''
-                                                        className={classBind(
-                                                            'new-blog__img'
-                                                        )}
-                                                    />
-                                                </div>
-
-                                                <div
-                                                    className={classBind(
-                                                        'new-blog__info'
-                                                    )}
-                                                >
-                                                    <h3
-                                                        className={classBind(
-                                                            'new-blog__title'
-                                                        )}
-                                                    >
-                                                        Thông báo đấu giá giữ xe
-                                                        tại CVHH Đầm Sen
-                                                    </h3>
-                                                    <div
-                                                        className={classBind(
-                                                            'new-blog__data'
-                                                        )}
-                                                    >
-                                                        <p
-                                                            className={classBind(
-                                                                'new-blog__view'
-                                                            )}
-                                                        >
-                                                            10N lượt xem
-                                                        </p>
-                                                        <div
-                                                            className={classBind(
-                                                                'new-blog__dot'
-                                                            )}
-                                                        ></div>
-                                                        <p
-                                                            className={classBind(
-                                                                'new-blog__view'
-                                                            )}
-                                                        >
-                                                            20/02/2022
-                                                        </p>
-                                                    </div>
-                                                </div>
-                                            </article>
-                                        </li>
->>>>>>> 39f681c2c356cb7a5ad58bcb85d0473f2228819d
                                     </ul>
                                 </section>
                             </div>
@@ -1234,22 +287,17 @@ function Blogs() {
                 <div className={classBind('blog-main')}>
                     <div className={classBind('row')}>
                         <div className={classBind('col-3 d-xl-none')}>
-<<<<<<< HEAD
                             <div
                                 className={classBind({
                                     'd-xl-none': !isFilterOpen
                                 })}
                             >
-=======
-                            <div className={classBind('blog-topic')}>
->>>>>>> 39f681c2c356cb7a5ad58bcb85d0473f2228819d
                                 <h2
                                     className={classBind('blog-topic__heading')}
                                 >
                                     CHỦ ĐỀ BÀI VIẾT
                                 </h2>
                                 <ul className={classBind('blog-topic__list')}>
-<<<<<<< HEAD
                                     <Link
                                         to='#'
                                         onClick={() => {
@@ -1270,28 +318,16 @@ function Blogs() {
                                                 }
                                             )}
                                             onClick={toggleFilter}
-=======
-                                    <Link to='#'>
-                                        <li
-                                            className={classBind(
-                                                'blog-topic__item',
-                                                'blog-topic__item--active'
-                                            )}
->>>>>>> 39f681c2c356cb7a5ad58bcb85d0473f2228819d
                                         >
                                             <img
                                                 src={icon.light}
                                                 alt=''
                                                 className={classBind(
                                                     'blog-topic__icon',
-<<<<<<< HEAD
                                                     {
                                                         'blog-topic__icon--active':
                                                             tag === 'Giới thiệu'
                                                     }
-=======
-                                                    'blog-topic__icon--active'
->>>>>>> 39f681c2c356cb7a5ad58bcb85d0473f2228819d
                                                 )}
                                             />
                                             <p
@@ -1304,7 +340,6 @@ function Blogs() {
                                         </li>
                                     </Link>
 
-<<<<<<< HEAD
                                     <Link
                                         to='#'
                                         onClick={() => {
@@ -1324,27 +359,16 @@ function Blogs() {
                                                 }
                                             )}
                                             onClick={toggleFilter}
-=======
-                                    <Link to='#'>
-                                        <li
-                                            className={classBind(
-                                                'blog-topic__item'
-                                            )}
->>>>>>> 39f681c2c356cb7a5ad58bcb85d0473f2228819d
                                         >
                                             <img
                                                 src={icon.news}
                                                 alt=''
                                                 className={classBind(
-<<<<<<< HEAD
                                                     'blog-topic__icon',
                                                     {
                                                         'blog-topic__icon--active':
                                                             tag === 'Tin tức'
                                                     }
-=======
-                                                    'blog-topic__icon'
->>>>>>> 39f681c2c356cb7a5ad58bcb85d0473f2228819d
                                                 )}
                                             />
                                             <p
@@ -1357,7 +381,6 @@ function Blogs() {
                                         </li>
                                     </Link>
 
-<<<<<<< HEAD
                                     <Link
                                         to='#'
                                         onClick={() => {
@@ -1377,27 +400,16 @@ function Blogs() {
                                                 }
                                             )}
                                             onClick={toggleFilter}
-=======
-                                    <Link to='#'>
-                                        <li
-                                            className={classBind(
-                                                'blog-topic__item'
-                                            )}
->>>>>>> 39f681c2c356cb7a5ad58bcb85d0473f2228819d
                                         >
                                             <img
                                                 src={icon.event}
                                                 alt=''
                                                 className={classBind(
-<<<<<<< HEAD
                                                     'blog-topic__icon',
                                                     {
                                                         'blog-topic__icon--active':
                                                             tag === 'Sự kiện'
                                                     }
-=======
-                                                    'blog-topic__icon'
->>>>>>> 39f681c2c356cb7a5ad58bcb85d0473f2228819d
                                                 )}
                                             />
                                             <p
@@ -1410,7 +422,6 @@ function Blogs() {
                                         </li>
                                     </Link>
 
-<<<<<<< HEAD
                                     <Link
                                         to='#'
                                         onClick={() => {
@@ -1430,27 +441,16 @@ function Blogs() {
                                                 }
                                             )}
                                             onClick={toggleFilter}
-=======
-                                    <Link to='#'>
-                                        <li
-                                            className={classBind(
-                                                'blog-topic__item'
-                                            )}
->>>>>>> 39f681c2c356cb7a5ad58bcb85d0473f2228819d
                                         >
                                             <img
                                                 src={icon.notification}
                                                 alt=''
                                                 className={classBind(
-<<<<<<< HEAD
                                                     'blog-topic__icon',
                                                     {
                                                         'blog-topic__icon--active':
                                                             tag === 'Thông báo'
                                                     }
-=======
-                                                    'blog-topic__icon'
->>>>>>> 39f681c2c356cb7a5ad58bcb85d0473f2228819d
                                                 )}
                                             />
                                             <p
@@ -1463,7 +463,6 @@ function Blogs() {
                                         </li>
                                     </Link>
 
-<<<<<<< HEAD
                                     <Link
                                         to='#'
                                         onClick={() => {
@@ -1483,28 +482,17 @@ function Blogs() {
                                                 }
                                             )}
                                             onClick={toggleFilter}
-=======
-                                    <Link to='#'>
-                                        <li
-                                            className={classBind(
-                                                'blog-topic__item'
-                                            )}
->>>>>>> 39f681c2c356cb7a5ad58bcb85d0473f2228819d
                                         >
                                             <img
                                                 src={icon.file}
                                                 alt=''
                                                 className={classBind(
-<<<<<<< HEAD
                                                     'blog-topic__icon',
                                                     {
                                                         'blog-topic__icon--active':
                                                             tag ===
                                                             'Tin cổ đông'
                                                     }
-=======
-                                                    'blog-topic__icon'
->>>>>>> 39f681c2c356cb7a5ad58bcb85d0473f2228819d
                                                 )}
                                             />
                                             <p
@@ -1517,7 +505,6 @@ function Blogs() {
                                         </li>
                                     </Link>
 
-<<<<<<< HEAD
                                     <Link
                                         to='#'
                                         onClick={() => {
@@ -1538,28 +525,17 @@ function Blogs() {
                                                 }
                                             )}
                                             onClick={toggleFilter}
-=======
-                                    <Link to='#'>
-                                        <li
-                                            className={classBind(
-                                                'blog-topic__item'
-                                            )}
->>>>>>> 39f681c2c356cb7a5ad58bcb85d0473f2228819d
                                         >
                                             <img
                                                 src={icon.group}
                                                 alt=''
                                                 className={classBind(
-<<<<<<< HEAD
                                                     'blog-topic__icon',
                                                     {
                                                         'blog-topic__icon--active':
                                                             tag ===
                                                             'Hoạt động đoàn thể'
                                                     }
-=======
-                                                    'blog-topic__icon'
->>>>>>> 39f681c2c356cb7a5ad58bcb85d0473f2228819d
                                                 )}
                                             />
                                             <p
@@ -1572,7 +548,6 @@ function Blogs() {
                                         </li>
                                     </Link>
                                 </ul>
-<<<<<<< HEAD
                                 <div
                                     className={classBind(
                                         'blog-topic__act',
@@ -1586,8 +561,6 @@ function Blogs() {
                                         onClick={toggleFilter}
                                     ></Button>
                                 </div>
-=======
->>>>>>> 39f681c2c356cb7a5ad58bcb85d0473f2228819d
                             </div>
                         </div>
 
@@ -1607,6 +580,8 @@ function Blogs() {
                                         className={classBind(
                                             'blog-search__input'
                                         )}
+                                        value={searchTerm}
+                                        onChange={handleChange}
                                         placeholder='Tìm kiếm'
                                     />
 
@@ -1631,7 +606,7 @@ function Blogs() {
                                             className={classBind(
                                                 'blog-datepicker__select'
                                             )}
-                                            onChange={onChange}
+                                            placeholder='Ngày bắt đầu'
                                         />
                                     </Space>
                                     {/* thêm icon lịch */}
@@ -1647,7 +622,7 @@ function Blogs() {
                                             className={classBind(
                                                 'blog-datepicker__select'
                                             )}
-                                            onChange={onChange}
+                                            placeholder='Ngày kết thúc'
                                         />
                                     </Space>
                                     {/* thêm icon lịch */}
@@ -1689,7 +664,6 @@ function Blogs() {
                                         'row row-cols-4 row-cols-xxl-3 row-cols-lg-2 row-cols-sm-1 gy-2 gx-2'
                                     )}
                                 >
-<<<<<<< HEAD
                                     {Blog.blogs.map((blog: Blog) => {
                                         return (
                                             <div
@@ -1709,61 +683,6 @@ function Blogs() {
                                             </div>
                                         );
                                     })}
-=======
-                                    {currentItems.map((post, index) => (
-                                        <div
-                                            key={index}
-                                            className={classBind('col')}
-                                        >
-                                            <PostItem
-                                                infoClassName={classBind(
-                                                    'custom-info-blog-list'
-                                                )}
-                                                mini={true}
-                                                host='Admin'
-                                                title={post.title}
-                                                tags={[
-                                                    {
-                                                        name: 'Sự kiện',
-                                                        tagClassName: classBind(
-                                                            'custom-tag-blog-list'
-                                                        )
-                                                    },
-                                                    {
-                                                        name: 'Thông báo',
-                                                        tagClassName: classBind(
-                                                            'custom-tag-blog-list'
-                                                        )
-                                                    },
-                                                    {
-                                                        name: 'Tin tức',
-                                                        tagClassName: classBind(
-                                                            'custom-tag-blog-list'
-                                                        )
-                                                    }
-                                                ]}
-                                                view={post.view}
-                                                postDate={post.postDate}
-                                                image={post.image}
-                                                hostClassName={classBind(
-                                                    'custom-host-blog-list'
-                                                )}
-                                                titleClassName={classBind(
-                                                    'custom-title-blog-list'
-                                                )}
-                                                viewClassName={classBind(
-                                                    'custom-view-blog-list'
-                                                )}
-                                                tagContainerClassName={classBind(
-                                                    'custom-tagcontainer-blog-list'
-                                                )}
-                                                dateClassName={classBind(
-                                                    'custom-date-blog-list'
-                                                )}
-                                            />
-                                        </div>
-                                    ))}
->>>>>>> 39f681c2c356cb7a5ad58bcb85d0473f2228819d
                                 </div>
 
                                 <div className={classBind('blog-paginate')}>
@@ -1771,7 +690,6 @@ function Blogs() {
                                         <button
                                             className={classBind(
                                                 'paginate__btn',
-<<<<<<< HEAD
                                                 {
                                                     'paginate__btn--disable':
                                                         page === 1
@@ -1786,24 +704,10 @@ function Blogs() {
                                                 src={icon.paginate_next}
                                                 alt=''
                                                 style={{ rotate: '180deg' }}
-=======
-                                                !canGoBack &&
-                                                    'paginate__btn--disable'
-                                            )}
-                                            onClick={() =>
-                                                paginate(currentPage - 1)
-                                            }
-                                            disabled={!canGoBack}
-                                        >
-                                            <img
-                                                src={icon.paginate_prev_disable}
-                                                alt=''
->>>>>>> 39f681c2c356cb7a5ad58bcb85d0473f2228819d
                                             />
                                         </button>
 
                                         {[...Array(totalPages)].map(
-<<<<<<< HEAD
                                             (_, index) => {
                                                 const pageNum = index + 1;
 
@@ -1873,30 +777,11 @@ function Blogs() {
                                                     </button>
                                                 );
                                             }
-=======
-                                            (_, index) => (
-                                                <button
-                                                    key={index + 1}
-                                                    className={classBind(
-                                                        'paginate__page',
-                                                        currentPage ===
-                                                            index + 1 &&
-                                                            'paginate__page--active'
-                                                    )}
-                                                    onClick={() =>
-                                                        paginate(index + 1)
-                                                    }
-                                                >
-                                                    {index + 1}
-                                                </button>
-                                            )
->>>>>>> 39f681c2c356cb7a5ad58bcb85d0473f2228819d
                                         )}
 
                                         <button
                                             className={classBind(
                                                 'paginate__btn',
-<<<<<<< HEAD
                                                 {
                                                     'paginate__btn--disable':
                                                         page === totalPages
@@ -1906,15 +791,6 @@ function Blogs() {
                                                 handlePageChange(page + 1)
                                             }
                                             disabled={page === totalPages}
-=======
-                                                !canGoForward &&
-                                                    'paginate__btn--disable'
-                                            )}
-                                            onClick={() =>
-                                                paginate(currentPage + 1)
-                                            }
-                                            disabled={!canGoForward}
->>>>>>> 39f681c2c356cb7a5ad58bcb85d0473f2228819d
                                         >
                                             <img
                                                 src={icon.paginate_next}

@@ -5,14 +5,12 @@ import styles from './DocumentItem.module.scss';
 
 const cx = classNames.bind(styles);
 
-// Định nghĩa kiểu cho document
 interface Document {
     id: number;
     name: string;
     createDate: string;
 }
 
-// Định nghĩa kiểu props cho DocumentItem
 interface DocumentItemProps {
     document: Document;
 }

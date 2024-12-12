@@ -79,6 +79,12 @@
 
         color: #666666;
 
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 4;
+        line-clamp: 4;
+        overflow: hidden;
+
         @include abstracts.screen(md) {
             margin-top: 4px;
             font-size: 1.4rem;
