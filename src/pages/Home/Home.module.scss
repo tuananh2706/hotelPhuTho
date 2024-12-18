@@ -1,6 +1,13 @@
 @use '../../components/Styles/abstracts';
 
 .home {
+    background-image: url('../../assets/images/Bg/img1.png');
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
 .home-intro {

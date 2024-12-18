@@ -286,7 +286,12 @@ function Blogs() {
 
                 <div className={classBind('blog-main')}>
                     <div className={classBind('row')}>
-                        <div className={classBind('col-3 d-xl-none')}>
+                        <div
+                            className={classBind(
+                                'col-3 d-xl-none',
+                                'blog-topic'
+                            )}
+                        >
                             <div
                                 className={classBind({
                                     'd-xl-none': !isFilterOpen

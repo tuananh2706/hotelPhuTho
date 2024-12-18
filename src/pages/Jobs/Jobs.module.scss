@@ -1,6 +1,14 @@
 @use '../../components/Styles/abstracts';
 
 .job {
+    background-image: url('../../assets/images/Bg/img1.png');
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    
     &__heading {
         display: flex;
         align-items: center;
